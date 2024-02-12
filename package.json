@@ -2,7 +2,7 @@
     "name": "hello-mongoose",
     "version": "1.0.0",
     "description": "",
-    "main": "index.ts",
+    "main": "index.js",
     "scripts": {
         "start": "nodemon src/index.ts",
         "test": "jest",

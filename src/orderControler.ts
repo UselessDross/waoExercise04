@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-//import { schema } from "./model/order";
+//import { Order } from "./orderSchema.js";
 import mongoose from "mongoose";
 
-const connection = mongoose.createConnection('mongodb://root:example@localhost:27017/')
+const connection = mongoose.createConnection('mongodb://localhost:27017/')
 export const model = connection.model('Orders',)
 
 const list = async (req: Request, res: Response) => {

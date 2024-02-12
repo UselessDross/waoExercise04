@@ -1,9 +1,9 @@
 // src/ordersRouter.ts
 import express, { Request, Response } from 'express';
-const Order  = require('./orderSchema'); // Import the Mongoose schema (JavaScript file)
+import { orderSchema } from './orderSchema'; // Import the Mongoose schema (JavaScript file)
 const router = express.Router();
-import mongoose from 'mongoose';
-import './db';
+import mongoose, { mongo } from 'mongoose';
+//import './db';
 
 // Existing routes
 //router.get('/',           (req, res) => { res.send('GET /orders route'); });
@@ -13,6 +13,9 @@ import './db';
 //router.patch('/:uid',     (req, res) => { res.send(`PATCH /orders/${req.params.uid} route`); });
 //router.delete('/:uid',    (req, res) => { res.send(`DELETE /orders/${req.params.uid} route`); });
 
+const connection = mongoose.createConnection('mongodb://localhost:27017/')
+
+const Order = connection.model('Order', orderSchema);
 
 
 
@@ -25,10 +28,10 @@ router.get('/', async (req, res) => {
     const material = req.query.m;
 
     // Reusing the existing connection
-    const db = mongoose.connection;
+    //const db = mongoose.connection;
 
     // Ensure the connection is open before proceeding
-    if (db.readyState !== 1) {
+    if (connection.readyState !== 1) {
                              res.status(500).json({ error: 'Database connection not ready' });
                              return;
                              }

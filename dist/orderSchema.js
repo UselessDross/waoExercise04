@@ -1,6 +1,8 @@
-const mongoose = require('mongoose');
-
-const orderSchema = new mongoose.Schema({
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.orderSchema = void 0;
+const mongoose_1 = require("mongoose");
+const orderSchema = new mongoose_1.Schema({
     material: String,
     amount: Number,
     currency: String,
@@ -16,7 +18,4 @@ const orderSchema = new mongoose.Schema({
         },
     },
 });
-
-const Order = mongoose.model('Order', orderSchema);
-
-module.exports = Order;
+exports.orderSchema = orderSchema;
